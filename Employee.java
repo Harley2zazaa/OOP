@@ -8,7 +8,7 @@
  * @author USER
  */
 public class Employee {
-    private String nationality = "Thai";
+    private static String nationality = "Thai";
     private String name;
     private Wallet wallet;
     private int energy;
@@ -61,11 +61,11 @@ public class Employee {
         this.energy = energy;
     }
     
-    public String getNationality(){
+    public static String getNationality(){
         return nationality;
     }
     
-    public void setNationality(String nationality){
-        this.nationality = nationality;
+    public static void setNationality(String nationality){
+        Employee.nationality = nationality;
     }
 } 

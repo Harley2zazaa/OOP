@@ -17,6 +17,7 @@ public class SeniorProgrammer extends Programmer{
         this.setEnergy(stamina-5);
         this.setHappiness(nah-5);
     }
+    
     public void coding(String str,int num){
         for (int i = 1 ; i<= num;i++){
             int stamina = this.getEnergy();
