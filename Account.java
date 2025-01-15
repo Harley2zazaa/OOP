@@ -8,34 +8,56 @@
  * @author USER
  */
 public class Account {
-    public double balance;
-    public String name;
+    protected double balance;
+    protected String name;
     
-    public void deposit(double b){
-        if (b >= 0){
-            balance += b;
-        }else{
-            System.out.println("The balance variable must be greater than or equal to zero.");
+    public Account(double balance,String name){
+        this.setBalance(balance);
+        this.setName(name);
+    }
+    
+    public void deposit(double a){
+        double temp = this.getBalance();
+        if (a > 0){
+            this.setBalance(temp+a);
+            System.out.println(a+" baht is deposited to "+this.getName()+".");
+        }
+        else{
+            System.out.println("Input number must be a positive integer.");
         }
     }
     
-    public double withdraw(double b) {
-    if (b >= 0) {
-        if (balance - b >= 0) {
-            balance -= b;
-            return b;
-        } else {
-            System.out.println("Your account balance is insufficient.");
-            return 0;
+    public void withdraw(double a){
+        double temp = this.getBalance();
+        if(a<0){
+            System.out.println("Input number must be a positive integer.");
         }
-    } else {
-        System.out.println("The balance variable must be greater than or equal to zero.");
-        return 0;
+        else if(temp-a <0){
+            System.out.println("Not enough money!");
+        }
+        else{
+            this.setBalance(temp-a);
+            System.out.println(a+" baht is withdrawn to "+this.getName()+".");
         }
     }
     
-    public void showInfo(){
-        System.out.println("In "+name+" account, there is a balance equal to "+balance+" baht.");
+    public void setName(String name){
+        this.name = name;
     }
-}   
-
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public void setBalance(double  balance){
+        this.balance = balance;
+    }
+    
+    public double getBalance(){
+        return this.balance;
+    }
+    
+    public void showAccount(){
+        System.out.println(this.getName()+" account has "+this.getBalance()+" baht.");
+    }
+}
