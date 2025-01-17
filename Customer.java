@@ -21,12 +21,12 @@ public class Customer {
     }
     
     public Customer(String firstName,String lastName,CheckingAccount acct){
-        this.setFristName(firstName);
+        this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setAcct(acct);
     }
     
-    public void setFristName(String firstName){
+    public void setFirstName(String firstName){
         this.firstName = firstName;
     }
     
@@ -34,8 +34,8 @@ public class Customer {
         return this.firstName;
     }
     
-    public void setLastName(String lastname){
-        this.lastName = lastname;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
     
     public String getLastName(){
@@ -53,7 +53,7 @@ public class Customer {
     @Override
     public String toString(){
         if(this.getAcct() == null){
-            return this.getFirstName()+" "+ this.getLastName()+" doesn't have account.";
+            return this.getFirstName()+" "+ this.getLastName()+" doesn’t have account.";
         }
         else{
             return "The "+this.getFirstName()+" account has "+this.getAcct().getBalance()+
