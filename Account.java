@@ -37,7 +37,7 @@ public class Account {
         }
         else{
             this.setBalance(temp-a);
-            System.out.println(a+" baht is withdrawn to "+this.getName()+".");
+            System.out.println(a+" baht is withdrawn from "+this.getName()+".");
         }
     }
     
