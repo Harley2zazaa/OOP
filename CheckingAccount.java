@@ -30,15 +30,18 @@ public class CheckingAccount extends Account{
     @Override
     public void withdraw(double a){
         double temp = this.getBalance();
-        double tempcre = this.getCredit();
-        if (temp - a >= 0){
-            this.setBalance(temp-a);
+        if (a <= 0){
+            System.out.println("Input number must be a positive integer.");
+            return;
+        }
+        double different = temp-a;
+        if (different >= 0){
+            this.setBalance(different);
             System.out.println(a+" baht is withdrawn from "+this.getName()+" and your credit balance is "+this.getCredit()+".");
         }
-        else if((temp-a)+tempcre >= 0){
-            double diff = temp-a;
+        else if(different+this.getCredit() >= 0){
             this.setBalance(0);
-            this.setCredit(this.getCredit()-diff);
+            this.setCredit(different+this.getCredit());
             System.out.println(a+" baht is withdrawn from "+this.getName()+" and your credit balance is "+this.getCredit()+".");
         }
         else{
@@ -49,15 +52,18 @@ public class CheckingAccount extends Account{
     public void withdraw(String a){
         double con = Double.parseDouble(a); // __type__.prase__type__(Standard)
         double temp = this.getBalance();
-        double tempcre = this.getCredit();
-        if (temp - con >= 0){
-            this.setBalance(temp-con);
+        if (con <= 0){
+            System.out.println("Input number must be a positive integer.");
+            return;
+        }
+        double different = temp-con;
+        if (different >= 0){ // money por
+            this.setBalance(different);
             System.out.println(a+" baht is withdrawn from "+this.getName()+" and your credit balance is "+this.getCredit()+".");
         }
-        else if((temp-con)+tempcre >= 0){
-            double diff = temp-con;
+        else if(different+this.getCredit() >= 0){ // money + credit por
             this.setBalance(0);
-            this.setCredit(this.getCredit()-diff);
+            this.setCredit(different+this.getCredit());
             System.out.println(a+" baht is withdrawn from "+this.getName()+" and your credit balance is "+this.getCredit()+".");
         }
         else{
