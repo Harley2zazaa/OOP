@@ -11,7 +11,7 @@ package GUI_LAB;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-public class TellerGUIplus implements ActionListener{
+public class TellerGUI implements ActionListener{
     private JFrame fr;
     private JPanel p1,p2,p3;
     private JLabel Balance,Amount;
@@ -19,7 +19,7 @@ public class TellerGUIplus implements ActionListener{
     private JButton Deposit,Withdraw,Exit;
     private double current,you_need;
 
-    public TellerGUIplus() {
+    public TellerGUI() {
         this.setCurrent(6000);
         this.setYou_need(0);
         fr = new JFrame("Teller GUI");
