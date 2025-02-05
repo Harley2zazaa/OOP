@@ -11,24 +11,23 @@ package GUI_LAB;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-public class TellerGUI implements ActionListener{
+public class TellerGUIplus implements ActionListener{
     private JFrame fr;
     private JPanel p1,p2,p3;
     private JLabel Balance,Amount;
     private JTextField Money,Need;
     private JButton Deposit,Withdraw,Exit;
     private double current,you_need;
-
-    public TellerGUI() {
-        this.setCurrent(6000);
-        this.setYou_need(0);
+    private Account wallet;
+    public TellerGUIplus() {
+        wallet = new Account(6000,"");
         fr = new JFrame("Teller GUI");
         p1 = new JPanel();
         p2 = new JPanel();
         p3 = new JPanel();
         Balance = new JLabel("Balance");
         Amount = new JLabel("Amount");
-        Money = new JTextField(this.getCurrent()+"");
+        Money = new JTextField(wallet.getBalance()+"");
         Need = new JTextField();
         Deposit = new JButton("Deposit");
         Withdraw = new JButton("Withdraw");
@@ -61,14 +60,6 @@ public class TellerGUI implements ActionListener{
         fr.setVisible(true);
     }
 
-    public double getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(double current) {
-        this.current = current;
-    }
-
     public double getYou_need() {
         return you_need;
     }
@@ -83,15 +74,19 @@ public class TellerGUI implements ActionListener{
        if  (Temp == Need){
            this.setYou_need(Double.parseDouble(Need.getText())); //Don't Forget Enter after type money you need
        }else if(Temp == Deposit){
-           this.setCurrent(this.getCurrent()+this.getYou_need()); 
+           wallet.setBalance(wallet.getBalance()+this.getYou_need());
+           this.setYou_need(0);
+           Money.setText(wallet.getBalance()+"");
+           Need.setText("");
+           /*this.setCurrent(this.getCurrent()+this.getYou_need()); 
            this.setYou_need(0);
            Money.setText(this.getCurrent()+"");
-           Need.setText("");
+           Need.setText("");*/
        }else if(Temp == Withdraw){
-           if (this.getCurrent()>=this.getYou_need()){
-                this.setCurrent(this.getCurrent()-this.getYou_need()); 
+           if (wallet.getBalance()>=this.getYou_need()){
+                wallet.setBalance(wallet.getBalance()-this.getYou_need()); 
                 this.setYou_need(0);
-                Money.setText(this.getCurrent()+"");
+                Money.setText(wallet.getBalance()+"");
                 Need.setText("");
            }else{
                this.setYou_need(0);
